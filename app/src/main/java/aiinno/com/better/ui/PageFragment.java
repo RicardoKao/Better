@@ -19,9 +19,9 @@ public class PageFragment extends Fragment {
     private int mPage;
 
     public static PageFragment newInstance(int page) {
+        PageFragment pageFragment = new PageFragment();
         Bundle args = new Bundle();
         args.putInt(ARG_PAGE, page);
-        PageFragment pageFragment = new PageFragment();
         pageFragment.setArguments(args);
         return pageFragment;
     }
@@ -29,15 +29,16 @@ public class PageFragment extends Fragment {
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        mPage = getArguments().getInt(ARG_PAGE);
+        mPage = getArguments() != null ? getArguments().getInt(ARG_PAGE) : 1;
+
     }
 
     @Nullable
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.fragment_page, container, false);
-        TextView textView = (TextView) view;
-        textView.setText("Fragment #" + mPage);
+        View textView = view.findViewById(R.id.text);
+        ((TextView)textView).setText("Fragment #" + mPage);
         return view;
     }
 
