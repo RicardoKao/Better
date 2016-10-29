@@ -51,6 +51,5 @@ public class SignService {
         System.out.println(authinfo.data);
         Ret qiniuauthinfo = QiNiuAuth("test2.png",authinfo.data);
         System.out.println(qiniuauthinfo.data);
-
     }
 }

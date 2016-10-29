@@ -33,3 +33,8 @@ dependencies {
     compile 'com.squareup.okhttp3:mockwebserver:3.4.1'
     compile 'com.squareup.okio:okio:1.8.0'
 }
+task clean(type: Exec) {
+    ext.lockhunter = '\"C:\\Program Files\\LockHunter\\LockHunter.exe\"'
+    def buildDir = file(new File("build"))
+    commandLine 'cmd', "$lockhunter", '/delete', '/silent', buildDir
+}
