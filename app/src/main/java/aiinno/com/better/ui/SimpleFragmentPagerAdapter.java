@@ -17,6 +17,7 @@ import com.mikepenz.fontawesome_typeface_library.FontAwesome;
 import com.mikepenz.iconics.IconicsDrawable;
 
 import aiinno.com.better.ui.PageFragment;
+import layout.HomeFragment;
 
 public class SimpleFragmentPagerAdapter extends FragmentPagerAdapter {
 
@@ -47,7 +48,8 @@ public class SimpleFragmentPagerAdapter extends FragmentPagerAdapter {
 
     @Override
     public Fragment getItem(int position) {
-        return PageFragment.newInstance(position + 1);
+        //return PageFragment.newInstance(position + 1);
+        return new HomeFragment();
     }
 
     @Override

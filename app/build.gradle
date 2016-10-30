@@ -22,6 +22,7 @@ android {
 dependencies {
     compile fileTree(dir: 'libs', include: ['*.jar'])
     testCompile 'junit:junit:4.12'
+    testCompile 'com.squareup.okhttp3:mockwebserver:3.4.1'
     compile 'com.android.support:appcompat-v7:25.0.0'
     compile 'com.squareup.retrofit2:retrofit:2.1.0'
     compile 'com.squareup.retrofit2:converter-gson:2.1.0'
@@ -29,12 +30,12 @@ dependencies {
     compile 'io.reactivex:rxandroid:1.1.0'
     compile 'com.jakewharton:butterknife:7.0.1'
     compile 'com.squareup.okhttp3:okhttp:3.4.1'
-    testCompile 'com.squareup.okhttp3:mockwebserver:3.4.1'
     compile 'com.squareup.okhttp3:mockwebserver:3.4.1'
     compile 'com.squareup.okio:okio:1.8.0'
     compile 'com.android.support:design:25.0.0'
-    compile "com.mikepenz:iconics-core:2.8.1@aar"
+    compile 'com.mikepenz:iconics-core:2.8.1@aar'
     compile 'com.mikepenz:fontawesome-typeface:4.7.0.0@aar'
+    compile 'com.android.support:support-v4:25.0.0'
 }
 task clean(type: Exec) {
     ext.lockhunter = '\"C:\\Program Files\\LockHunter\\LockHunter.exe\"'
