@@ -48,7 +48,24 @@ public class PlanService {
         return res;
     }
 
+    public static ArrayList<Plan> GetPlan(String token) throws IOException {
+        AuthInterceptor authi = new AuthInterceptor();
+        authi.setToken(token);
+        OkHttpClient okHttpClient = new OkHttpClient.Builder()
+                .addInterceptor(authi)
+                .build();
+        Retrofit retrofit = new Retrofit.Builder()
+                .baseUrl(API_URL)
+                .addConverterFactory(GsonConverterFactory.create())
+                .callFactory(okHttpClient)
+                .build();
+        PlanAPI pubapi = retrofit.create(PlanAPI.class);
+        ArrayList<Plan> plans = pubapi.GetPlan().execute().body();
+        return plans;
+    }
+
     public static void main(String... args) throws IOException{
+        /*
         SignService s = new SignService();
         Ret authinfo = s.WechatAuth("xiaotingv6",API_URL);
         System.out.println(authinfo.data);
@@ -71,5 +88,11 @@ public class PlanService {
         plan.setTags(tags);
         Ret addplaninfo = AddPlan(plan,authinfo.data);
         System.out.println(addplaninfo.data);
+        */
+        SignService s = new SignService();
+        Ret authinfo = s.WechatAuth("xiaotingv6",API_URL);
+        System.out.println(authinfo.data);
+        ArrayList<Plan> plans = GetPlan(authinfo.data);
+        System.out.println(plans.get(0).getName());
     }
 }
