@@ -13,7 +13,7 @@ import android.text.Spannable;
 import android.text.SpannableString;
 import android.text.style.ImageSpan;
 
-import com.mikepenz.google_material_typeface_library.GoogleMaterial;
+import com.mikepenz.fontawesome_typeface_library.FontAwesome;
 import com.mikepenz.iconics.IconicsDrawable;
 
 import aiinno.com.better.ui.PageFragment;
@@ -21,12 +21,28 @@ import aiinno.com.better.ui.PageFragment;
 public class SimpleFragmentPagerAdapter extends FragmentPagerAdapter {
 
     final int PAGE_COUNT = 3;
-    private String tabTitles[] = new String[]{"tab1","tab2","tab3"};
+    private String tabTitles[] = new String[]{"首页","活动","广场"};
     private Context context;
+    private  Drawable[] icons = new Drawable[3];
 
     public SimpleFragmentPagerAdapter(FragmentManager fm,Context context) {
         super(fm);
         this.context = context;
+        Drawable icon_home = new IconicsDrawable(this.context)
+                .icon(FontAwesome.Icon.faw_home)
+                .color(Color.BLACK)
+                .sizeDp(24);
+        Drawable icon_plan = new IconicsDrawable(this.context)
+                .icon(FontAwesome.Icon.faw_calendar)
+                .color(Color.BLACK)
+                .sizeDp(24);
+        Drawable icon_found = new IconicsDrawable(this.context)
+                .icon(FontAwesome.Icon.faw_compass)
+                .color(Color.BLACK)
+                .sizeDp(24);
+        icons[0] = icon_home;
+        icons[1] = icon_plan;
+        icons[2] = icon_found;
     }
 
     @Override
@@ -44,13 +60,10 @@ public class SimpleFragmentPagerAdapter extends FragmentPagerAdapter {
         // Generate title based on item position
         // return tabTitles[position];
         //Drawable image = context.getResources().getDrawable(imageResId[position]);
-        Drawable image1 = new IconicsDrawable(this.context)
-                .icon(GoogleMaterial.Icon.gmd_3d_rotation)
-                .color(Color.RED)
-                .sizeDp(24);
-        image1.setBounds(0, 0, image1.getIntrinsicWidth(), image1.getIntrinsicHeight());
-        SpannableString sb = new SpannableString(" ");
-        ImageSpan imageSpan = new ImageSpan(image1, ImageSpan.ALIGN_BOTTOM);
+
+        //image1.setBounds(0, 0, image1.getIntrinsicWidth(), image1.getIntrinsicHeight());
+        SpannableString sb = new SpannableString(" " +"\n"+ tabTitles[position]);
+        ImageSpan imageSpan = new ImageSpan(icons[position], ImageSpan.ALIGN_BOTTOM);
         sb.setSpan(imageSpan, 0, 1, Spannable.SPAN_EXCLUSIVE_EXCLUSIVE);
         return sb;
     }

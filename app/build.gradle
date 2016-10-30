@@ -34,7 +34,7 @@ dependencies {
     compile 'com.squareup.okio:okio:1.8.0'
     compile 'com.android.support:design:25.0.0'
     compile "com.mikepenz:iconics-core:2.8.1@aar"
-    compile 'com.mikepenz:google-material-typeface:2.2.0.3.original@aar'
+    compile 'com.mikepenz:fontawesome-typeface:4.7.0.0@aar'
 }
 task clean(type: Exec) {
     ext.lockhunter = '\"C:\\Program Files\\LockHunter\\LockHunter.exe\"'
