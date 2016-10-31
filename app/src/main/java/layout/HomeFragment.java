@@ -25,6 +25,7 @@ import com.dexafree.materialList.view.MaterialListView;
 
 import android.graphics.Bitmap;
 import aiinno.com.better.card.PlanProvider;
+import aiinno.com.better.card.UserPlanProvider;
 
 /**
  * A simple {@link Fragment} subclass.
@@ -89,8 +90,18 @@ public class HomeFragment extends Fragment implements SwipeRefreshLayout.OnRefre
                 .endConfig()
                 .build();
 
+        Card card3 = new Card.Builder(getActivity())
+                .withProvider(new UserPlanProvider())
+                .setPlanTitle("每天6：00起床")
+                .setImg(R.drawable.alarmclock)
+                .endConfig()
+                .build();
+
         mListView = (MaterialListView) view.findViewById(R.id.material_listview);
         mListView.getAdapter().addAll(card2);
+
+        mListView2 = (MaterialListView) view.findViewById(R.id.material_listview2);
+        mListView2.getAdapter().addAll(card3);
 
         /*
         int myWidth = 512;
