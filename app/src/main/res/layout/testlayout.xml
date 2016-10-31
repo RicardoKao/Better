@@ -7,6 +7,11 @@
     <com.dexafree.materialList.view.MaterialListView
         android:layout_width="fill_parent"
         android:layout_height="fill_parent"
+        android:id="@+id/user_profile_header"/>
+
+    <com.dexafree.materialList.view.MaterialListView
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent"
         android:id="@+id/material_listview"/>
 
 </android.support.v4.widget.SwipeRefreshLayout>

@@ -1,5 +1,11 @@
 package aiinno.com.better.service;
 
+import android.app.ProgressDialog;
+import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
+import android.util.Log;
+
+import java.io.File;
 import java.io.IOException;
 import java.util.ArrayList;
 
@@ -15,6 +21,12 @@ import retrofit2.Retrofit;
 import retrofit2.converter.gson.GsonConverterFactory;
 import aiinno.com.better.service.BaseInterceptor.AuthInterceptor;
 import aiinno.com.better.service.SignService;
+import retrofit2.adapter.rxjava.RxJavaCallAdapterFactory;
+import rx.Subscriber;
+import rx.android.schedulers.AndroidSchedulers;
+import rx.functions.Func1;
+import rx.schedulers.Schedulers;
+
 /**
  * Created by lbk on 2016/10/30.
  */
@@ -47,22 +59,49 @@ public class PlanService {
         ).execute().body();
         return res;
     }
-
-    public static ArrayList<Plan> GetPlan(String token) throws IOException {
-        AuthInterceptor authi = new AuthInterceptor();
-        authi.setToken(token);
-        OkHttpClient okHttpClient = new OkHttpClient.Builder()
-                .addInterceptor(authi)
-                .build();
+/*
+    public void GetPlan() throws IOException {
         Retrofit retrofit = new Retrofit.Builder()
                 .baseUrl(API_URL)
+                .addCallAdapterFactory(RxJavaCallAdapterFactory.create())
                 .addConverterFactory(GsonConverterFactory.create())
-                .callFactory(okHttpClient)
                 .build();
-        PlanAPI pubapi = retrofit.create(PlanAPI.class);
-        ArrayList<Plan> plans = pubapi.GetPlan().execute().body();
-        return plans;
+        PlanAPI serviceApi = retrofit.create(PlanAPI.class);
+        serviceApi.downloadPicFromNet()
+                .subscribeOn(Schedulers.newThread())//在新线程中实现该方法
+                .map(new Func1<ResponseBody, Bitmap>() {
+                    @Override
+                    public Bitmap call(ResponseBody arg0) {
+                        if(true) {//保存图片成功
+                            Bitmap bitmap = BitmapFactory.decodeFile(getExternalFilesDir(null) + File.separator + "baidu.png");
+                            return bitmap;//返回一个bitmap对象
+                        }
+                        return null;
+                    }
+                })
+                .observeOn(AndroidSchedulers.mainThread())//在Android主线程中展示
+                .subscribe(new Subscriber<Bitmap>() {
+                    ProgressDialog dialog = new ProgressDialog();
+                    @Override
+                    public void onStart() {
+                        dialog.show();
+                        super.onStart();
+                    }
+                    @Override
+                    public void onCompleted() {
+                        dialog.dismiss();
+                    }
+                    @Override
+                    public void onError(Throwable arg0) {
+                        Log.d(TAG, "onError ===== " + arg0.toString());
+                    }
+                    @Override
+                    public void onNext(Bitmap arg0) {
+                        imageIv.setImageBitmap(arg0);
+                    }
+                });
     }
+    */
 
     public static void main(String... args) throws IOException{
         /*
@@ -92,7 +131,7 @@ public class PlanService {
         SignService s = new SignService();
         Ret authinfo = s.WechatAuth("xiaotingv6",API_URL);
         System.out.println(authinfo.data);
-        ArrayList<Plan> plans = GetPlan(authinfo.data);
-        System.out.println(plans.get(0).getName());
+        //ArrayList<Plan> plans = GetPlan(authinfo.data);
+        //System.out.println(plans.get(0).getName());
     }
 }

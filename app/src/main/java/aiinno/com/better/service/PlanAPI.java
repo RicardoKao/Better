@@ -14,6 +14,7 @@ import retrofit2.http.POST;
 import retrofit2.http.FormUrlEncoded;
 import retrofit2.http.Field;
 import okhttp3.ResponseBody;
+import rx.Observable;
 
 /**
  * Created by lbk on 2016/10/30.
@@ -35,4 +36,6 @@ public interface PlanAPI {
 
     @GET("/plans/") @Json
     Call<ArrayList<Plan>> GetPlan();
+    @GET("/plans/")
+    Observable<ResponseBody> downloadPicFromNet();
 }

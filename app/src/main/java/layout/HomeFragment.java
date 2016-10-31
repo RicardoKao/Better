@@ -1,6 +1,8 @@
 package layout;
 
 
+import android.graphics.drawable.BitmapDrawable;
+import android.graphics.drawable.Drawable;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.support.v4.widget.SwipeRefreshLayout;
@@ -12,15 +14,16 @@ import android.widget.Toast;
 
 import aiinno.com.better.R;
 
+import com.bumptech.glide.Glide;
+import com.bumptech.glide.request.animation.GlideAnimation;
+import com.bumptech.glide.request.target.SimpleTarget;
 import com.dexafree.materialList.card.Card;
 import com.dexafree.materialList.card.CardProvider;
 import com.dexafree.materialList.card.OnActionClickListener;
 import com.dexafree.materialList.card.action.TextViewAction;
-import com.dexafree.materialList.card.action.WelcomeButtonAction;
-import com.dexafree.materialList.card.provider.ListCardProvider;
-import com.dexafree.materialList.listeners.OnDismissCallback;
-import com.dexafree.materialList.listeners.RecyclerItemClickListener;
 import com.dexafree.materialList.view.MaterialListView;
+
+import android.graphics.Bitmap;
 
 /**
  * A simple {@link Fragment} subclass.
@@ -28,6 +31,7 @@ import com.dexafree.materialList.view.MaterialListView;
 public class HomeFragment extends Fragment implements SwipeRefreshLayout.OnRefreshListener {
     SwipeRefreshLayout swipeLayout;
     private MaterialListView mListView;
+    private MaterialListView mListView2;
 
 
     public HomeFragment() {
@@ -76,6 +80,32 @@ public class HomeFragment extends Fragment implements SwipeRefreshLayout.OnRefre
                 .build();
         mListView = (MaterialListView) view.findViewById(R.id.material_listview);
         mListView.getAdapter().addAll(card);
+        int myWidth = 512;
+        int myHeight = 384;
+        mListView2 =(MaterialListView) view.findViewById(R.id.user_profile_header);
+        Glide.with(getActivity())
+                .load("http://ofi8akpq7.bkt.clouddn.com/sys/background.png")
+                .asBitmap()
+                .into(
+                        new SimpleTarget<Bitmap>(myWidth, myHeight) {
+                            @Override
+                            public void onResourceReady(Bitmap bitmap, GlideAnimation anim) {
+                                // Do something with bitmap here.
+                                Drawable bitmapd =new BitmapDrawable(bitmap);
+                                //Log.d("bigimgab",bitmapd.toString());
+                                Card bgcard = new Card.Builder(getActivity())
+                                        .setTag("BIG_IMAGE_CARD")
+                                        .withProvider(new CardProvider())
+                                        .setLayout(R.layout.material_big_image_card_layout)
+                                        .setTitle("Card number 5")
+                                        .setDescription("Lorem ipsum dolor sit amet")
+                                        .setDrawable(bitmapd)
+                                        .endConfig()
+                                        .build();
+                                mListView2.getAdapter().addAll(bgcard);
+                            }
+                        }
+                );
         return view;
     }
     @Override
