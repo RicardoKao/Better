@@ -24,6 +24,10 @@ import com.dexafree.materialList.card.action.TextViewAction;
 import com.dexafree.materialList.view.MaterialListView;
 
 import android.graphics.Bitmap;
+
+import java.util.ArrayList;
+import java.util.List;
+
 import aiinno.com.better.card.PlanProvider;
 import aiinno.com.better.card.UserPlanProvider;
 
@@ -94,14 +98,31 @@ public class HomeFragment extends Fragment implements SwipeRefreshLayout.OnRefre
                 .withProvider(new UserPlanProvider())
                 .setPlanTitle("每天6：00起床")
                 .setImg(R.drawable.alarmclock)
+                .setDay(10)
+                .setCDay(3)
+                .setFee(50)
+                .endConfig()
+                .build();
+
+        Card card4 = new Card.Builder(getActivity())
+                .withProvider(new UserPlanProvider())
+                .setPlanTitle("每天早上跑步")
+                .setImg(R.drawable.running)
+                .setDay(10)
+                .setCDay(5)
+                .setFee(50)
                 .endConfig()
                 .build();
 
         mListView = (MaterialListView) view.findViewById(R.id.material_listview);
         mListView.getAdapter().addAll(card2);
 
+        List<Card> cards = new ArrayList<>();
+        cards.add(card3);
+        cards.add(card4);
+
         mListView2 = (MaterialListView) view.findViewById(R.id.material_listview2);
-        mListView2.getAdapter().addAll(card3);
+        mListView2.getAdapter().addAll(cards);
 
         /*
         int myWidth = 512;

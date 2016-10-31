@@ -41,6 +41,9 @@ public class UserPlanProvider extends CardProvider<ListCardProvider> {
     @Nullable
     private int cday;
 
+    int fee;
+    int day;
+
 
 
     @Override
@@ -68,6 +71,24 @@ public class UserPlanProvider extends CardProvider<ListCardProvider> {
         return this;
     }
 
+    public UserPlanProvider setFee(int fee){
+        this.fee = fee;
+        notifyDataSetChanged();
+        return this;
+    }
+
+    public  UserPlanProvider setDay(int day){
+        this.day = day;
+        notifyDataSetChanged();
+        return this;
+    }
+
+    public  UserPlanProvider setCDay(int cday){
+        this.cday = cday;
+        notifyDataSetChanged();
+        return this;
+    }
+
     @Override
     public void render(@NonNull final View view, @NonNull final Card card) {
         super.render(view, card);
@@ -75,5 +96,10 @@ public class UserPlanProvider extends CardProvider<ListCardProvider> {
         textView.setText(ptitle);
         ImageView imageview = (ImageView)view.findViewById(R.id.user_join_plan_img);
         imageview.setImageResource(img);
+        ProgressView pv = (ProgressView)view.findViewById(R.id.user_join_plan_progress);
+        pv.setProgress((float)(cday/(float)day));
+        TextView des = (TextView)view.findViewById(R.id.user_join_plan_des);
+        des.setText("已完成："+ cday + "/" + day + " " + "押金：" + fee);
+        //pv.stop();
     }
 }
