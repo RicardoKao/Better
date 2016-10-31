@@ -24,6 +24,7 @@ import com.dexafree.materialList.card.action.TextViewAction;
 import com.dexafree.materialList.view.MaterialListView;
 
 import android.graphics.Bitmap;
+import aiinno.com.better.card.PlanProvider;
 
 /**
  * A simple {@link Fragment} subclass.
@@ -32,7 +33,6 @@ public class HomeFragment extends Fragment implements SwipeRefreshLayout.OnRefre
     SwipeRefreshLayout swipeLayout;
     private MaterialListView mListView;
     private MaterialListView mListView2;
-
 
     public HomeFragment() {
         // Required empty public constructor
@@ -53,6 +53,7 @@ public class HomeFragment extends Fragment implements SwipeRefreshLayout.OnRefre
                 getResources().getColor(android.R.color.holo_blue_dark),
                 getResources().getColor(android.R.color.holo_orange_dark));
         //return inflater.inflate(R.layout.fragment_home, container, false);
+
         Card card = new Card.Builder(getActivity())
                 .withProvider(new CardProvider())
                 .setLayout(R.layout.material_basic_buttons_card)
@@ -78,8 +79,20 @@ public class HomeFragment extends Fragment implements SwipeRefreshLayout.OnRefre
                         }))
                 .endConfig()
                 .build();
+
+        Card card2 = new Card.Builder(getActivity())
+                .withProvider(new PlanProvider())
+                .setText("等级LV 20")
+                .setImg(R.drawable.alex)
+                .setUserName("Alex")
+                .setExp(80)
+                .endConfig()
+                .build();
+
         mListView = (MaterialListView) view.findViewById(R.id.material_listview);
-        mListView.getAdapter().addAll(card);
+        mListView.getAdapter().addAll(card2);
+
+        /*
         int myWidth = 512;
         int myHeight = 384;
         mListView2 =(MaterialListView) view.findViewById(R.id.user_profile_header);
@@ -106,6 +119,7 @@ public class HomeFragment extends Fragment implements SwipeRefreshLayout.OnRefre
                             }
                         }
                 );
+        */
         return view;
     }
     @Override

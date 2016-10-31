@@ -4,14 +4,21 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent" >
 
-    <com.dexafree.materialList.view.MaterialListView
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+
+    <!--<com.dexafree.materialList.view.MaterialListView
         android:layout_width="fill_parent"
         android:layout_height="fill_parent"
-        android:id="@+id/user_profile_header"/>
+        android:id="@+id/user_profile_header"/>-->
 
     <com.dexafree.materialList.view.MaterialListView
         android:layout_width="fill_parent"
         android:layout_height="fill_parent"
         android:id="@+id/material_listview"/>
+
+    </LinearLayout>
 
 </android.support.v4.widget.SwipeRefreshLayout>
