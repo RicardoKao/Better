@@ -9,6 +9,10 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.support.v4.widget.SwipeRefreshLayout;
 
+import com.dexafree.materialList.card.Card;
+import com.dexafree.materialList.card.CardProvider;
+import com.dexafree.materialList.view.MaterialListView;
+
 import aiinno.com.better.R;
 
 /**
@@ -17,6 +21,7 @@ import aiinno.com.better.R;
 public class SquareFragment extends Fragment implements SwipeRefreshLayout.OnRefreshListener{
 
     SwipeRefreshLayout swipeLayout;
+    private MaterialListView squareHeaderListView;
 
     public SquareFragment(){
 
@@ -41,6 +46,17 @@ public class SquareFragment extends Fragment implements SwipeRefreshLayout.OnRef
                 getResources().getColor(android.R.color.holo_red_dark),
                 getResources().getColor(android.R.color.holo_blue_dark),
                 getResources().getColor(android.R.color.holo_orange_dark));
+
+        Card card = new Card.Builder(getActivity())
+                .setTag("BIG_IMAGE_CARD")
+                .withProvider(new CardProvider())
+                .setLayout(R.layout.material_big_image_card_layout)
+                .setDrawable(R.drawable.background)
+                .endConfig()
+                .build();
+
+        squareHeaderListView = (MaterialListView) view.findViewById(R.id.square_header_viewlist);
+        squareHeaderListView.getAdapter().addAll(card);
         return view;
     }
 }
