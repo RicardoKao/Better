@@ -13,7 +13,11 @@ import com.dexafree.materialList.card.Card;
 import com.dexafree.materialList.card.CardProvider;
 import com.dexafree.materialList.view.MaterialListView;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import aiinno.com.better.R;
+import aiinno.com.better.card.SquarePlanProvider;
 
 /**
  * Created by lbk on 2016/11/1.
@@ -22,6 +26,7 @@ public class SquareFragment extends Fragment implements SwipeRefreshLayout.OnRef
 
     SwipeRefreshLayout swipeLayout;
     private MaterialListView squareHeaderListView;
+    private MaterialListView plansquareitemlistview;
 
     public SquareFragment(){
 
@@ -55,8 +60,24 @@ public class SquareFragment extends Fragment implements SwipeRefreshLayout.OnRef
                 .endConfig()
                 .build();
 
+        Card card2 = new Card.Builder(getActivity())
+                .withProvider(new SquarePlanProvider())
+                .setImg(R.drawable.running)
+                .setPlanname("一起跑步")
+                .setPlandes("押金：10元 时间 8月20日-9月11日")
+                .setPlansigndes("已有14人报名")
+                .endConfig()
+                .build();
+
+        List<Card> cards = new ArrayList<>();
+        cards.add(card2);
+        cards.add(card2);
+
         squareHeaderListView = (MaterialListView) view.findViewById(R.id.square_header_viewlist);
         squareHeaderListView.getAdapter().addAll(card);
+
+        plansquareitemlistview = (MaterialListView) view.findViewById(R.id.plan_square_listview);
+        plansquareitemlistview.getAdapter().addAll(cards);
         return view;
     }
 }
