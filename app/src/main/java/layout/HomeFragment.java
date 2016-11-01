@@ -89,41 +89,12 @@ public class HomeFragment extends Fragment implements SwipeRefreshLayout.OnRefre
                 .endConfig()
                 .build();
 
-        Card card2 = new Card.Builder(getActivity())
-                .withProvider(new PlanProvider())
-                .setText("等级LV 20")
-                .setImg(R.drawable.alex)
-                .setUserName("Alex")
-                .setExp(80)
-                .endConfig()
-                .build();
-
-        Card card3 = new Card.Builder(getActivity())
-                .withProvider(new UserPlanProvider())
-                .setPlanTitle("每天6：00起床")
-                .setImg(R.drawable.alarmclock)
-                .setDay(10)
-                .setCDay(3)
-                .setFee(50)
-                .endConfig()
-                .build();
-
-        Card card4 = new Card.Builder(getActivity())
-                .withProvider(new UserPlanProvider())
-                .setPlanTitle("每天早上跑步")
-                .setImg(R.drawable.running)
-                .setDay(10)
-                .setCDay(5)
-                .setFee(50)
-                .endConfig()
-                .build();
-
         mListView = (MaterialListView) view.findViewById(R.id.material_listview);
-        mListView.getAdapter().addAll(card2);
+        mListView.getAdapter().addAll(initUserProfile());
 
         List<Card> cards = new ArrayList<>();
-        cards.add(card3);
-        cards.add(card4);
+        cards.add(initUserPlan());
+        cards.add(initUserPlan());
 
         mListView2 = (MaterialListView) view.findViewById(R.id.material_listview2);
         mListView2.getAdapter().addAll(cards);
@@ -169,5 +140,41 @@ public class HomeFragment extends Fragment implements SwipeRefreshLayout.OnRefre
     @Override
     public void onRefresh() {
         Log.d("refresh","refreshing");
+    }
+
+    private Card initUserProfile(){
+        Card card = new Card.Builder(getActivity())
+                .withProvider(new PlanProvider())
+                .setText("等级LV 20")
+                .setImg(R.drawable.alex)
+                .setUserName("Alex")
+                .setExp(80)
+                .endConfig()
+                .build();
+        return card;
+    }
+
+    private Card initUserPlan(){
+        Card card = new Card.Builder(getActivity())
+                .withProvider(new UserPlanProvider())
+                .setPlanTitle("每天6：00起床")
+                .setImg(R.drawable.alarmclock)
+                .setDay(10)
+                .setCDay(3)
+                .setFee(50)
+                .endConfig()
+                .build();
+        /*
+        Card card = new Card.Builder(getActivity())
+                .withProvider(new UserPlanProvider())
+                .setPlanTitle("每天早上跑步")
+                .setImg(R.drawable.running)
+                .setDay(10)
+                .setCDay(5)
+                .setFee(50)
+                .endConfig()
+                .build();
+         */
+        return card;
     }
 }

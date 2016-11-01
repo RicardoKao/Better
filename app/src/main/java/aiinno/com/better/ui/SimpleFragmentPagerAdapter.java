@@ -49,7 +49,17 @@ public class SimpleFragmentPagerAdapter extends FragmentPagerAdapter {
     @Override
     public Fragment getItem(int position) {
         //return PageFragment.newInstance(position + 1);
+
+        switch (position){
+            case 0:
+                return new HomeFragment();
+            case 1:
+                return new SquareFragment();
+            case 2:
+                return new HomeFragment();
+        }
         return new HomeFragment();
+
     }
 
     @Override
