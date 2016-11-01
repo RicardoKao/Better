@@ -1,6 +1,7 @@
 package layout;
 
 
+import android.graphics.Color;
 import android.graphics.drawable.BitmapDrawable;
 import android.graphics.drawable.Drawable;
 import android.os.Bundle;
@@ -10,6 +11,7 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageView;
 import android.widget.Toast;
 
 import aiinno.com.better.R;
@@ -22,6 +24,8 @@ import com.dexafree.materialList.card.CardProvider;
 import com.dexafree.materialList.card.OnActionClickListener;
 import com.dexafree.materialList.card.action.TextViewAction;
 import com.dexafree.materialList.view.MaterialListView;
+import com.mikepenz.fontawesome_typeface_library.FontAwesome;
+import com.mikepenz.iconics.IconicsDrawable;
 
 import android.graphics.Bitmap;
 
@@ -123,6 +127,14 @@ public class HomeFragment extends Fragment implements SwipeRefreshLayout.OnRefre
 
         mListView2 = (MaterialListView) view.findViewById(R.id.material_listview2);
         mListView2.getAdapter().addAll(cards);
+
+        Drawable icon_checkin = new IconicsDrawable(getActivity())
+                .icon(FontAwesome.Icon.faw_calendar)
+                .color(Color.BLACK)
+                .sizeDp(24);
+
+        ImageView icon_user_checkin = (ImageView)  view.findViewById(R.id.user_checkin_icon);
+        icon_user_checkin.setImageDrawable(icon_checkin);
 
         /*
         int myWidth = 512;
