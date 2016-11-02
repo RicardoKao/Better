@@ -12,6 +12,7 @@ import android.support.v4.app.FragmentPagerAdapter;
 import android.text.Spannable;
 import android.text.SpannableString;
 import android.text.style.ImageSpan;
+import android.util.Log;
 
 import com.mikepenz.fontawesome_typeface_library.FontAwesome;
 import com.mikepenz.iconics.IconicsDrawable;
@@ -56,7 +57,7 @@ public class SimpleFragmentPagerAdapter extends FragmentPagerAdapter {
             case 1:
                 return new SquareFragment();
             case 2:
-                return new HomeFragment();
+                return new FeedFragment();
         }
         return new HomeFragment();
 
