@@ -10,11 +10,27 @@
         android:layout_width="match_parent"
         android:id="@+id/betteractionbar"
         android:minHeight="?attr/actionBarSize"
-        app:theme="@style/ThemeOverlay.AppCompat.ActionBar" />
+        app:theme="@style/Theme.AppCompat.DayNight.DarkActionBar" >
+            <TextView
+                android:layout_height="wrap_content"
+                android:layout_width="wrap_content"
+                android:layout_gravity="center"
+                android:textStyle="bold"
+                android:text="Better">
+                </TextView>
+            <ImageButton
+                android:layout_height="wrap_content"
+                android:layout_width="wrap_content"
+                android:id="@+id/image_button"
+                android:background="#00000000"
+                android:layout_gravity="right">
+            </ImageButton>
+    </android.support.v7.widget.Toolbar>
 
 
     <!--app:tabMode="scrollable"  这个属性我在代码中设置了-->
     <!-- tabLayout.setTabMode(TabLayout.MODE_SCROLLABLE);-->
+
     <android.support.v4.view.ViewPager
         android:id="@+id/viewpager"
         android:layout_width="match_parent"
