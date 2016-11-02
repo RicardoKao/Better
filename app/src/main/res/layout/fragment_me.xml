@@ -1,0 +1,46 @@
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="aiinno.com.better.ui.MeFragment">
+
+    <!-- TODO: Update blank fragment layout -->
+    <!--<include layout="@layout/testlayout"/>-->
+    <android.support.v4.widget.SwipeRefreshLayout xmlns:android="http://schemas.android.com/apk/res/android"
+        android:id="@+id/me_swipe_container"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent" >
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <LinearLayout
+                android:orientation="horizontal"
+                android:layout_height="wrap_content"
+                android:layout_width="fill_parent">
+                <com.rey.material.widget.Button
+                    android:layout_width="fill_parent"
+                    android:layout_height="wrap_content"
+                    android:text="与我相关"
+                    android:layout_gravity="left"
+                    android:layout_weight="1"/>
+                <com.rey.material.widget.Button
+                    android:layout_width="fill_parent"
+                    android:layout_height="wrap_content"
+                    android:text="我创建的"
+                    android:layout_gravity="right"
+                    android:layout_weight="1"/>
+            </LinearLayout>
+            <com.dexafree.materialList.view.MaterialListView
+                android:layout_width="fill_parent"
+                android:layout_height="fill_parent"
+                android:layout_margin="1dp"
+                android:id="@+id/me_plans"/>
+        </LinearLayout>
+
+    </android.support.v4.widget.SwipeRefreshLayout>
+
+</FrameLayout>
+

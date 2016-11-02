@@ -22,10 +22,10 @@ import layout.HomeFragment;
 
 public class SimpleFragmentPagerAdapter extends FragmentPagerAdapter {
 
-    final int PAGE_COUNT = 3;
-    private String tabTitles[] = new String[]{"首页","活动","广场"};
+    final int PAGE_COUNT = 4;
+    private String tabTitles[] = new String[]{"首页","活动","广场","我的"};
     private Context context;
-    private  Drawable[] icons = new Drawable[3];
+    private  Drawable[] icons = new Drawable[4];
 
     public SimpleFragmentPagerAdapter(FragmentManager fm,Context context) {
         super(fm);
@@ -42,9 +42,14 @@ public class SimpleFragmentPagerAdapter extends FragmentPagerAdapter {
                 .icon(FontAwesome.Icon.faw_compass)
                 .color(Color.BLACK)
                 .sizeDp(24);
+        Drawable icon_me = new IconicsDrawable(this.context)
+                .icon(FontAwesome.Icon.faw_user)
+                .color(Color.BLACK)
+                .sizeDp(24);
         icons[0] = icon_home;
         icons[1] = icon_plan;
         icons[2] = icon_found;
+        icons[3] = icon_me;
     }
 
     @Override
@@ -58,6 +63,8 @@ public class SimpleFragmentPagerAdapter extends FragmentPagerAdapter {
                 return new SquareFragment();
             case 2:
                 return new FeedFragment();
+            case 3:
+                return new MeFragment();
         }
         return new HomeFragment();
 
