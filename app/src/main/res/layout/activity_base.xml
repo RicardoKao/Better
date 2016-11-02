@@ -5,6 +5,13 @@
     android:layout_height="match_parent"
     android:orientation="vertical">
 
+    <android.support.v7.widget.Toolbar
+        android:layout_height="wrap_content"
+        android:layout_width="match_parent"
+        android:id="@+id/betteractionbar"
+        android:minHeight="?attr/actionBarSize"
+        app:theme="@style/ThemeOverlay.AppCompat.ActionBar" />
+
 
     <!--app:tabMode="scrollable"  这个属性我在代码中设置了-->
     <!-- tabLayout.setTabMode(TabLayout.MODE_SCROLLABLE);-->
