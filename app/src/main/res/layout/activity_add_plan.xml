@@ -3,6 +3,7 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    xmlns:et_labelEnable="http://schemas.android.com/tools"
     android:orientation="vertical">
 
     <android.support.v7.widget.Toolbar
@@ -11,6 +12,7 @@
         android:id="@+id/betteraddplanactionbar"
         android:minHeight="?attr/actionBarSize"
         app:theme="@style/Theme.AppCompat.DayNight.DarkActionBar" >
+
         <TextView
             android:layout_height="wrap_content"
             android:layout_width="wrap_content"
@@ -31,18 +33,41 @@
     <!--app:tabMode="scrollable"  这个属性我在代码中设置了-->
     <!-- tabLayout.setTabMode(TabLayout.MODE_SCROLLABLE);-->
 
-    <android.support.v4.view.ViewPager
-        android:id="@+id/viewpager"
-        android:layout_width="match_parent"
-        android:layout_height="0px"
-        android:layout_weight="1"
-        android:background="@android:color/white" />
 
-    <android.support.design.widget.TabLayout
-        android:id="@+id/sliding_tabs"
+    <com.rey.material.widget.EditText
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        style="@style/MyCustomTabLayout"        />
+        android:id="@+id/textfield_title"
+        android:inputType="text"
+        app:et_inputId="@+id/textfield_declare_input"
+        app:et_supportMode="helper"
+        app:et_helper="请输入计划标题"
+        app:v_styleId="@array/edittext"
+        >
+    </com.rey.material.widget.EditText>
+
+    <com.rey.material.widget.EditText
+        android:id="@+id/textfield_declare"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        android:inputType="text"
+        app:et_inputId="@+id/textfield_declare_input"
+        app:et_supportMode="helper"
+        app:et_helper="请输入你的宣言"
+        app:v_styleId="@array/edittext"/>
+
+    <Button
+        android:text="增加规则"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/button_addrules" />
+
+    <ListView
+        android:id="@+id/textfield_rules"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent" />
+
 
 </LinearLayout>
 
