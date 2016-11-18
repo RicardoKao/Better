@@ -33,29 +33,55 @@
     <!--app:tabMode="scrollable"  这个属性我在代码中设置了-->
     <!-- tabLayout.setTabMode(TabLayout.MODE_SCROLLABLE);-->
 
-
-    <com.rey.material.widget.EditText
+    <RelativeLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:id="@+id/textfield_title"
-        android:inputType="text"
-        app:et_inputId="@+id/textfield_declare_input"
-        app:et_supportMode="helper"
-        app:et_helper="请输入计划标题"
-        app:v_styleId="@array/edittext"
-        >
-    </com.rey.material.widget.EditText>
+        android:layout_height="wrap_content">
 
-    <com.rey.material.widget.EditText
-        android:id="@+id/textfield_declare"
+        <TextView
+            android:id="@+id/create_plan_title"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:padding="12dp"
+            android:text="@string/create_plan_title_text"
+            android:textSize="14sp" />
+
+        <EditText
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:inputType="text"
+            android:padding="12dp"
+            android:text=""
+            android:id="@+id/create_plan_title_value"
+            android:layout_alignParentEnd="true"
+            android:layout_toEndOf="@+id/create_plan_title"
+            android:textSize="14sp"/>
+
+    </RelativeLayout>
+
+    <RelativeLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="8dp"
-        android:inputType="text"
-        app:et_inputId="@+id/textfield_declare_input"
-        app:et_supportMode="helper"
-        app:et_helper="请输入你的宣言"
-        app:v_styleId="@array/edittext"/>
+        android:layout_height="wrap_content">
+
+        <TextView
+            android:id="@+id/create_plan_declare"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:padding="12dp"
+            android:text="@string/create_plan_declare_text"
+            android:textSize="14sp" />
+
+        <EditText
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:inputType="text"
+            android:padding="12dp"
+            android:text=""
+            android:id="@+id/create_plan_declare_value"
+            android:layout_alignParentEnd="true"
+            android:layout_toEndOf="@+id/create_plan_declare"
+            android:textSize="14sp"/>
+
+    </RelativeLayout>
 
     <RelativeLayout
         android:layout_width="match_parent"
@@ -88,14 +114,6 @@
         android:layout_height="wrap_content">
 
         <TextView
-            android:id="@+id/etime"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:padding="12dp"
-            android:text="@string/etime"
-            android:textSize="14sp" />
-
-        <TextView
             android:id="@+id/etime_value"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -106,6 +124,16 @@
             android:hint="timehint"
             android:padding="12dp"
             android:textSize="14sp" />
+
+        <TextView
+            android:id="@+id/etime"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:padding="12dp"
+            android:text="@string/etime"
+            android:textSize="14sp"
+            android:layout_centerVertical="true"
+            android:layout_alignParentStart="true" />
 
     </RelativeLayout>
 
@@ -119,6 +147,20 @@
         android:id="@+id/listview"
         android:layout_width="match_parent"
         android:layout_height="wrap_content" />
+
+    <Button
+        android:id="@+id/create_plan_addimg_button"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/create_plan_addimg"
+        android:textColor="#14e4ff" />
+
+    <Button
+        android:id="@+id/create_plan_button"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/create_plan"
+        android:textColor="#14e4ff" />
 
 
 
