@@ -3,4 +3,11 @@
 
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="rule">规则</string>
+    <string name="rule_hint">规则描述</string>
+    <string name="rule_title1">规则（</string>
+    <string name="rule_title2">）</string>
+    <string name="rule_add">增加规则</string>
+    <string name="stime">开始时间</string>
+    <string name="etime">结束时间</string>
 </resources>
