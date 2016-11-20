@@ -42,7 +42,7 @@ public class SignService {
                 .callFactory(okHttpClient)
                 .build();
         PublicAPI pubapi = retrofit.create(PublicAPI.class);
-        Ret res = pubapi.QiNiuAuth("text.png").execute().body();
+        Ret res = pubapi.QiNiuAuth(pname).execute().body();
         return res;
     }
 

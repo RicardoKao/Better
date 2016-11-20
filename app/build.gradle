@@ -45,6 +45,8 @@ dependencies {
     compile 'com.github.bumptech.glide:glide:3.7.0'
     compile 'com.github.rey5137:material:1.2.4'
     compile 'com.github.lovetuzitong:MultiImageSelector:1.2'
+    compile 'com.qiniu:qiniu-android-sdk:7.3.1'
+    compile 'com.qiniu:happy-dns:0.2.3.2'
 }
 task clean(type: Exec) {
     ext.lockhunter = '\"C:\\Program Files\\LockHunter\\LockHunter.exe\"'

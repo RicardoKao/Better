@@ -103,7 +103,7 @@
             android:layout_toRightOf="@+id/stime"
             android:drawableEnd="@mipmap/more"
             android:drawableRight="@mipmap/more"
-            android:hint="timehint"
+            android:hint="@string/timehint"
             android:padding="12dp"
             android:textSize="14sp" />
 
@@ -154,6 +154,16 @@
         android:layout_height="wrap_content"
         android:text="@string/create_plan_addimg"
         android:textColor="#14e4ff" />
+
+    <TextView
+        android:id="@+id/img_path"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:padding="12dp"
+        android:text=""
+        android:textSize="14sp"
+        android:layout_centerVertical="true" />
+
 
     <Button
         android:id="@+id/create_plan_button"

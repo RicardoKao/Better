@@ -44,6 +44,7 @@ import android.util.Log;
 import aiinno.com.better.service.SignService;
 import aiinno.com.better.service.PlanService;
 import aiinno.com.better.model.Ret;
+import aiinno.com.better.util.QiNiuUploader;
 import me.nereo.multi_image_selector.MultiImageSelector;
 
 import android.support.v4.app.ActivityCompat;
@@ -72,6 +73,7 @@ public class AddPlanActivity extends AppCompatActivity {
     protected static final int REQUEST_STORAGE_READ_ACCESS_PERMISSION = 101;
     protected static final int REQUEST_STORAGE_WRITE_ACCESS_PERMISSION = 102;
     private ArrayList<String> mSelectPath;
+    TextView img_path;
     /*
     private DatePicker datePicker;
     private TimePicker timePicker;
@@ -166,6 +168,8 @@ public class AddPlanActivity extends AppCompatActivity {
             }
         });
 
+        img_path = (TextView) findViewById(R.id.img_path);
+
         Button cbutton = (Button) findViewById(R.id.create_plan_button);
         final EditText title_view = (EditText) findViewById(R.id.create_plan_title_value);
         final EditText declare_view = (EditText) findViewById(R.id.create_plan_declare_value);
@@ -237,10 +241,14 @@ public class AddPlanActivity extends AppCompatActivity {
                 StringBuilder sb = new StringBuilder();
                 for(String p: mSelectPath){
                     sb.append(p);
-                    sb.append("\n");
+                    //sb.append("\n");
                 }
                 //mResultText.setText(sb.toString());
+                img_path.setText(sb.toString());
                 Log.d("plan_img_path",sb.toString());
+                QiNiuUploader qiNiuUploader = new QiNiuUploader();
+                qiNiuUploader.setUploadFilePath(sb.toString());
+                qiNiuUploader.uploadFile("test1.jpg");
             }
         }
     }
