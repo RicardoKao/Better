@@ -67,6 +67,16 @@ public class SignService {
         return ckeckinfo;
     }
 
+    public static Ret Login(String email,String pass,String login_type,String client)throws IOException{
+        Retrofit retrofit = new Retrofit.Builder()
+                .baseUrl(API_URL)
+                .addConverterFactory(GsonConverterFactory.create())
+                .build();
+        PublicAPI pubapi = retrofit.create(PublicAPI.class);
+        Ret authinfo = pubapi.Login(email,pass,login_type,client).execute().body();
+        return authinfo;
+    }
+
     public static void main(String... args) throws IOException, InterruptedException {
         /*
         Ret authinfo = WechatAuth("xiaotingv6",API_URL);
@@ -79,7 +89,12 @@ public class SignService {
         Ret authinfo = EmailSignUp("906528226@qq.com","xiaoting6ll","xiaot");
         System.out.println(authinfo.data);
         */
+        /*
         Ret checkinfo = CheckEmail("906528226@qq.com","366003");
         System.out.println(checkinfo.data);
+        */
+
+        Ret authinfo = Login("906528226@qq.com","xiaoting6ll","email","android");
+        System.out.println(authinfo.data);
     }
 }

@@ -35,4 +35,5 @@
     <string name="choose_signin_text">没有账号，去注册</string>
     <string name="prompt_username">用户名称</string>
     <string name="action_username_short">用户名称</string>
+    <string name="prompt_token">验证码</string>
 </resources>
