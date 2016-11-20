@@ -31,6 +31,8 @@ import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Locale;
+import java.util.regex.Pattern;
+import java.util.regex.Matcher;
 
 import aiinno.com.better.model.Plan;
 import aiinno.com.better.util.DateTimePickDialogUtil;
@@ -55,6 +57,9 @@ import android.content.pm.PackageManager;
 import android.os.Build;
 import android.Manifest;
 
+import java.util.Date;
+import java.text.SimpleDateFormat;
+
 
 /**
  * Created by lbk on 2016/11/3.
@@ -74,6 +79,7 @@ public class AddPlanActivity extends AppCompatActivity {
     protected static final int REQUEST_STORAGE_WRITE_ACCESS_PERMISSION = 102;
     private ArrayList<String> mSelectPath;
     TextView img_path;
+    public String img_title;
     /*
     private DatePicker datePicker;
     private TimePicker timePicker;
@@ -246,9 +252,19 @@ public class AddPlanActivity extends AppCompatActivity {
                 //mResultText.setText(sb.toString());
                 img_path.setText(sb.toString());
                 Log.d("plan_img_path",sb.toString());
+                String regEx = "\\.[a-z]+";
+                Pattern pattern = Pattern.compile(regEx);
+                Matcher matcher = pattern.matcher(sb.toString());
+                boolean rs = matcher.find();
+                Log.d("plan_img_path",matcher.group());
+
+                SimpleDateFormat df = new SimpleDateFormat("yyyyMMddHHmmss");
+                System.out.println();
+
                 QiNiuUploader qiNiuUploader = new QiNiuUploader();
                 qiNiuUploader.setUploadFilePath(sb.toString());
-                qiNiuUploader.uploadFile("test1.jpg");
+                qiNiuUploader.uploadFile(df.format(new Date())+matcher.group());
+                img_title = df.format(new Date())+matcher.group();
             }
         }
     }
