@@ -30,6 +30,7 @@ public class SignService {
         Ret authinfo = pubapi.WechatAuth(wechatid).execute().body();
         return authinfo;
     }
+
     public static Ret QiNiuAuth(String pname,String token) throws IOException{
         AuthInterceptor authi = new AuthInterceptor();
         authi.setToken(token);
@@ -46,10 +47,39 @@ public class SignService {
         return res;
     }
 
+    public static Ret EmailSignUp(String email, String passwd,String username)throws IOException{
+        Retrofit retrofit = new Retrofit.Builder()
+                .baseUrl(API_URL)
+                .addConverterFactory(GsonConverterFactory.create())
+                .build();
+        PublicAPI pubapi = retrofit.create(PublicAPI.class);
+        Ret signupinfo = pubapi.Signup("email",email,passwd,username).execute().body();
+        return signupinfo;
+    }
+
+    public static Ret CheckEmail(String email, String token)throws IOException{
+        Retrofit retrofit = new Retrofit.Builder()
+                .baseUrl(API_URL)
+                .addConverterFactory(GsonConverterFactory.create())
+                .build();
+        PublicAPI pubapi = retrofit.create(PublicAPI.class);
+        Ret ckeckinfo = pubapi.CheckEmail(email,token).execute().body();
+        return ckeckinfo;
+    }
+
     public static void main(String... args) throws IOException, InterruptedException {
+        /*
         Ret authinfo = WechatAuth("xiaotingv6",API_URL);
         System.out.println(authinfo.data);
         Ret qiniuauthinfo = QiNiuAuth("test2.png",authinfo.data);
         System.out.println(qiniuauthinfo.data);
+        */
+
+        /*
+        Ret authinfo = EmailSignUp("906528226@qq.com","xiaoting6ll","xiaot");
+        System.out.println(authinfo.data);
+        */
+        Ret checkinfo = CheckEmail("906528226@qq.com","366003");
+        System.out.println(checkinfo.data);
     }
 }

@@ -31,4 +31,28 @@ public interface PublicAPI {
     @FormUrlEncoded
     @POST("/getQiNiuToken/") @Json
     Call<Ret> QiNiuAuth(@Field("pname") String pname);
+
+    @FormUrlEncoded
+    @POST("/login/") @Json
+    Call<Ret> Login(@Field("email") String email,
+                    @Field("pass") String pass,
+                    @Field("login_type") String login_type,
+                    @Field("client") String client
+    );
+
+    @FormUrlEncoded
+    @POST("/signup/") @Json
+    Call<Ret> Signup(@Field("register_type") String register_type,
+                    @Field("email") String email,
+                    @Field("passwd") String passwd,
+                    @Field("username") String username
+    );
+
+    @FormUrlEncoded
+    @POST("/checkEmail/") @Json
+    Call<Ret> CheckEmail(@Field("email") String email,
+                     @Field("token") String token
+    );
+
+
 }

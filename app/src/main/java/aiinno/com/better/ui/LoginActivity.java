@@ -29,6 +29,8 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
 
+import org.w3c.dom.Text;
+
 import java.util.ArrayList;
 import java.util.List;
 
@@ -63,6 +65,12 @@ public class LoginActivity extends AppCompatActivity implements LoaderCallbacks<
     private EditText mPasswordView;
     private View mProgressView;
     private View mLoginFormView;
+    private TextView mtoLoginTextView;
+    private TextView mtoSigninTextView;
+    private boolean isLogin = true;
+    private Button mEmailSignInButton;
+    private Button mEmailSignUpButton;
+    private EditText mUserNameView;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -84,7 +92,10 @@ public class LoginActivity extends AppCompatActivity implements LoaderCallbacks<
             }
         });
 
-        Button mEmailSignInButton = (Button) findViewById(R.id.email_sign_in_button);
+        mEmailSignInButton = (Button) findViewById(R.id.email_sign_in_button);
+        mEmailSignUpButton = (Button) findViewById(R.id.email_sign_up_button);
+        mUserNameView = (EditText) findViewById(R.id.username);
+
         mEmailSignInButton.setOnClickListener(new OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -92,8 +103,44 @@ public class LoginActivity extends AppCompatActivity implements LoaderCallbacks<
             }
         });
 
+        mEmailSignUpButton.setOnClickListener(new OnClickListener() {
+            @Override
+            public void onClick(View view) {
+
+            }
+        });
+
         mLoginFormView = findViewById(R.id.login_form);
         mProgressView = findViewById(R.id.login_progress);
+
+        mtoLoginTextView = (TextView) findViewById(R.id.choose_login);
+        mtoSigninTextView = (TextView) findViewById(R.id.choose_signin);
+        mtoLoginTextView.setOnClickListener(new OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                if(!isLogin){
+                    mtoSigninTextView.setVisibility(View.VISIBLE);
+                    mtoLoginTextView.setVisibility(View.GONE);
+                    mEmailSignInButton.setVisibility(View.VISIBLE);
+                    mEmailSignUpButton.setVisibility(View.GONE);
+                    mUserNameView.setVisibility(View.GONE);
+                }
+                isLogin = true;
+            }
+        });
+        mtoSigninTextView.setOnClickListener(new OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                if(isLogin){
+                    mtoLoginTextView.setVisibility(View.VISIBLE);
+                    mtoSigninTextView.setVisibility(View.GONE);
+                    mEmailSignInButton.setVisibility(View.GONE);
+                    mEmailSignUpButton.setVisibility(View.VISIBLE);
+                    mUserNameView.setVisibility(View.VISIBLE);
+                }
+                isLogin = false;
+            }
+        });
     }
 
     private void populateAutoComplete() {

@@ -18,15 +18,21 @@
     <string name="title_activity_login">Sign in</string>
 
     <!-- Strings related to login -->
-    <string name="prompt_email">Email</string>
-    <string name="prompt_password">Password (optional)</string>
-    <string name="action_sign_in">Sign in or register</string>
-    <string name="action_sign_in_short">Sign in</string>
-    <string name="error_invalid_email">This email address is invalid</string>
-    <string name="error_invalid_password">This password is too short</string>
-    <string name="error_incorrect_password">This password is incorrect</string>
-    <string name="error_field_required">This field is required</string>
+    <string name="prompt_email">邮箱</string>
+    <string name="prompt_password">密码</string>
+    <string name="prompt_password2">再次输入密码</string>
+    <string name="action_sign_in">登录</string>
+    <string name="action_sign_up">注册</string>
+    <string name="action_sign_in_short">登录</string>
+    <string name="error_invalid_email">邮箱输入有误</string>
+    <string name="error_invalid_password">密码太短了</string>
+    <string name="error_incorrect_password">密码错误</string>
+    <string name="error_field_required">这项是必须填写的</string>
     <string name="permission_rationale">"Contacts permissions are needed for providing email
         completions."
     </string>
+    <string name="choose_login_text">已有账号，去登录</string>
+    <string name="choose_signin_text">没有账号，去注册</string>
+    <string name="prompt_username">用户名称</string>
+    <string name="action_username_short">用户名称</string>
 </resources>
