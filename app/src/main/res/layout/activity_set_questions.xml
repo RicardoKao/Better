@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/activity_set_questions"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="aiinno.com.better.SetQuestionsActivity"
+    android:orientation="vertical"
+    android:weightSum="1">
+
+    <Button
+        android:id="@+id/add_questions"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="设置问题"
+        android:textColor="#14e4ff" />
+    <ListView
+        android:id="@+id/add_questions_listview"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_weight="9.43" />
+
+</LinearLayout>

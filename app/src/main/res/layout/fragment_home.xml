@@ -46,7 +46,8 @@
                         android:id="@+id/user_checkin_icon"
                         android:layout_gravity="center"/>
 
-                    <com.rey.material.widget.Button
+                    <Button
+                        android:id="@+id/user_checkin_button"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:text="签到"

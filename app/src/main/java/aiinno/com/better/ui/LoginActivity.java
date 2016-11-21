@@ -184,6 +184,16 @@ public class LoginActivity extends AppCompatActivity implements LoaderCallbacks<
                 isLogin = false;
             }
         });
+
+        SharedPreferences preference = getSharedPreferences("person", Context.MODE_PRIVATE);
+        String _email = preference.getString("Email","");
+        String _passwd = preference.getString("Passwd","");
+        if(!_email.equals("")){
+            mEmailView.setText(_email);
+        }
+        if(!_passwd.equals("")){
+            mPasswordView.setText(_passwd);
+        }
     }
 
     private void populateAutoComplete() {

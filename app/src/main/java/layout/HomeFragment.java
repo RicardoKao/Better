@@ -16,6 +16,7 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.Toast;
 
@@ -56,6 +57,7 @@ public class HomeFragment extends Fragment implements SwipeRefreshLayout.OnRefre
     private MaterialListView mListView;
     private MaterialListView mListView2;
     GetPlansTask mSignTask;
+    Button checkin_button;
 
     public HomeFragment() {
         // Required empty public constructor
@@ -106,12 +108,7 @@ public class HomeFragment extends Fragment implements SwipeRefreshLayout.OnRefre
         mListView = (MaterialListView) view.findViewById(R.id.material_listview);
         mListView.getAdapter().addAll(initUserProfile());
 
-        List<Card> cards = new ArrayList<>();
-        cards.add(initUserPlan());
-        cards.add(initUserPlan());
-
         mListView2 = (MaterialListView) view.findViewById(R.id.material_listview2);
-        mListView2.getAdapter().addAll(cards);
 
         Drawable icon_checkin = new IconicsDrawable(getActivity())
                 .icon(FontAwesome.Icon.faw_calendar)
@@ -123,6 +120,15 @@ public class HomeFragment extends Fragment implements SwipeRefreshLayout.OnRefre
 
         mSignTask = new GetPlansTask();
         mSignTask.execute((Void) null);
+
+        checkin_button = (Button)view.findViewById(R.id.user_checkin_button);
+        checkin_button.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Toast.makeText(getActivity(), "成功签到", Toast.LENGTH_SHORT).show();
+            }
+        });
+
         return view;
     }
     @Override
@@ -137,6 +143,7 @@ public class HomeFragment extends Fragment implements SwipeRefreshLayout.OnRefre
                 .setImg(R.drawable.alex)
                 .setUserName("Alex")
                 .setExp(80)
+                .setGold(50)
                 .endConfig()
                 .build();
         return card;

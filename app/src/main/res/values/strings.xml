@@ -36,4 +36,7 @@
     <string name="prompt_username">用户名称</string>
     <string name="action_username_short">用户名称</string>
     <string name="prompt_token">验证码</string>
+    <string name="prompt_feeds">写点感想吧...</string>
+    <string name="checkin_add_img">上传图片</string>
+
 </resources>

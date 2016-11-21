@@ -13,8 +13,7 @@
         android:layout_height="wrap_content"
         card_view:cardCornerRadius="2dp">
 
-        <LinearLayout
-            android:orientation="horizontal"
+        <RelativeLayout
             android:layout_width="fill_parent"
             android:layout_height="wrap_content">
 
@@ -26,8 +25,10 @@
             <LinearLayout
                 android:orientation="vertical"
                 android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:layout_marginLeft="@dimen/big_padding">
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="@dimen/big_padding"
+                android:layout_toRightOf="@id/user_profile_header_avatar"
+                >
 
                 <TextView android:id="@+id/user_profile_header_name"
                     android:layout_width="@dimen/bigger_title_size"
@@ -38,16 +39,20 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content" />
 
-            </LinearLayout>
-            <com.rey.material.widget.ProgressView
-                android:id="@+id/user_profile_header_exp"
-                android:layout_width="48dp"
-                android:layout_height="48dp"
-                app:pv_autostart="true"
-                app:pv_circular="false"
-                app:pv_progressMode="indeterminate"/>
+                <TextView
+                    android:id="@+id/user_profile_header_gold"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content" />
 
-        </LinearLayout>
+                <ProgressBar
+                    style="?android:attr/progressBarStyleHorizontal"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/progressBar_exp" />
+
+            </LinearLayout>
+
+        </RelativeLayout>
 
 
 

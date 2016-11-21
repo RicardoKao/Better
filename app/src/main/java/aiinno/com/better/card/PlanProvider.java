@@ -10,6 +10,7 @@ import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 import android.view.View;
 import android.widget.ImageView;
+import android.widget.ProgressBar;
 import android.widget.TextView;
 
 import com.dexafree.materialList.card.Card;
@@ -28,6 +29,7 @@ public class PlanProvider extends CardProvider<ListCardProvider> {
     @Nullable
     private String username;
     @Nullable int exp;
+    private int gold;
 
 
 
@@ -62,6 +64,13 @@ public class PlanProvider extends CardProvider<ListCardProvider> {
         return this;
     }
 
+    public PlanProvider setGold(int gold){
+        this.gold = gold;
+        notifyDataSetChanged();
+        return this;
+    }
+
+
 
 
 
@@ -76,8 +85,10 @@ public class PlanProvider extends CardProvider<ListCardProvider> {
         imageview.setImageResource(img);
         TextView usernametextview = (TextView)view.findViewById(R.id.user_profile_header_name);
         usernametextview.setText(username);
-        ProgressView pv = (ProgressView)view.findViewById(R.id.user_profile_header_exp);
+        TextView goldView = (TextView) view.findViewById(R.id.user_profile_header_gold);
+        goldView.setText("金币："+ gold);
+        ProgressBar pv = (ProgressBar)view.findViewById(R.id.progressBar_exp);
         pv.setProgress(exp);
-        pv.setVisibility(view.INVISIBLE);
+        pv.setVisibility(View.VISIBLE);
     }
 }

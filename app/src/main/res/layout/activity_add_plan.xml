@@ -121,7 +121,7 @@
             android:layout_toRightOf="@+id/etime"
             android:drawableEnd="@mipmap/more"
             android:drawableRight="@mipmap/more"
-            android:hint="timehint"
+            android:hint="@string/timehint"
             android:padding="12dp"
             android:textSize="14sp" />
 
