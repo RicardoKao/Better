@@ -25,7 +25,8 @@
         <activity android:name=".TestActivity"></activity>
         <activity
             android:name=".ui.LoginActivity"
-            android:label="@string/title_activity_login">
+            android:label="@string/app_name"
+            android:icon="@drawable/better_logo">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 

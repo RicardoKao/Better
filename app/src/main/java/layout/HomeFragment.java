@@ -121,34 +121,6 @@ public class HomeFragment extends Fragment implements SwipeRefreshLayout.OnRefre
         ImageView icon_user_checkin = (ImageView)  view.findViewById(R.id.user_checkin_icon);
         icon_user_checkin.setImageDrawable(icon_checkin);
 
-        /*
-        int myWidth = 512;
-        int myHeight = 384;
-        mListView2 =(MaterialListView) view.findViewById(R.id.user_profile_header);
-        Glide.with(getActivity())
-                .load("http://ofi8akpq7.bkt.clouddn.com/sys/background.png")
-                .asBitmap()
-                .into(
-                        new SimpleTarget<Bitmap>(myWidth, myHeight) {
-                            @Override
-                            public void onResourceReady(Bitmap bitmap, GlideAnimation anim) {
-                                // Do something with bitmap here.
-                                Drawable bitmapd =new BitmapDrawable(bitmap);
-                                //Log.d("bigimgab",bitmapd.toString());
-                                Card bgcard = new Card.Builder(getActivity())
-                                        .setTag("BIG_IMAGE_CARD")
-                                        .withProvider(new CardProvider())
-                                        .setLayout(R.layout.material_big_image_card_layout)
-                                        .setTitle("Card number 5")
-                                        .setDescription("Lorem ipsum dolor sit amet")
-                                        .setDrawable(bitmapd)
-                                        .endConfig()
-                                        .build();
-                                mListView2.getAdapter().addAll(bgcard);
-                            }
-                        }
-                );
-        */
         mSignTask = new GetPlansTask();
         mSignTask.execute((Void) null);
         return view;
@@ -180,17 +152,6 @@ public class HomeFragment extends Fragment implements SwipeRefreshLayout.OnRefre
                 .setFee(50)
                 .endConfig()
                 .build();
-        /*
-        Card card = new Card.Builder(getActivity())
-                .withProvider(new UserPlanProvider())
-                .setPlanTitle("每天早上跑步")
-                .setImg(R.drawable.running)
-                .setDay(10)
-                .setCDay(5)
-                .setFee(50)
-                .endConfig()
-                .build();
-         */
         return card;
     }
 
