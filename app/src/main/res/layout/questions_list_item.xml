@@ -54,32 +54,23 @@
                 android:layout_alignParentRight="true"
                 android:text="delete"
                 android:textColor="@android:color/holo_blue_bright" />
-
-
         </RelativeLayout>
 
         <RelativeLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content">
 
-            <TextView
-                android:id="@+id/place"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:padding="12dp"
-                android:text="问题"
-                android:textSize="14sp" />
+            <android.support.design.widget.TextInputLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
 
-            <EditText
+            <AutoCompleteTextView
                 android:id="@+id/rule_value"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_toEndOf="@+id/place"
-                android:layout_toRightOf="@+id/place"
-                android:background="@null"
                 android:hint="问题描述"
-                android:padding="12dp"
-                android:textSize="14sp" />
+                android:inputType="text"/>
+            </android.support.design.widget.TextInputLayout>
 
         </RelativeLayout>
 
@@ -92,15 +83,18 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:id="@+id/checkBox_1" />
-
-            <AutoCompleteTextView
-                android:id="@+id/ans_1"
+            <android.support.design.widget.TextInputLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:hint="答案1"
-                android:inputType="text"
-                android:singleLine="false"
-                android:layout_toRightOf="@id/checkBox_1"/>
+                android:layout_toRightOf="@id/checkBox_1">
+                <AutoCompleteTextView
+                    android:id="@+id/ans_1"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:hint="答案1"
+                    android:inputType="text"
+                    android:singleLine="true" />
+            </android.support.design.widget.TextInputLayout>
         </RelativeLayout>
 
         <RelativeLayout
@@ -113,6 +107,11 @@
                 android:layout_height="wrap_content"
                 android:id="@+id/checkBox_2" />
 
+            <android.support.design.widget.TextInputLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_toRightOf="@id/checkBox_2">
+
             <AutoCompleteTextView
                 android:id="@+id/ans_2"
                 android:layout_width="match_parent"
@@ -121,6 +120,7 @@
                 android:inputType="text"
                 android:singleLine="false"
                 android:layout_toRightOf="@id/checkBox_2"/>
+            </android.support.design.widget.TextInputLayout>
 
         </RelativeLayout>
 
@@ -134,14 +134,19 @@
                 android:layout_height="wrap_content"
                 android:id="@+id/checkBox_3" />
 
+            <android.support.design.widget.TextInputLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_toRightOf="@id/checkBox_3">
+
             <AutoCompleteTextView
                 android:id="@+id/ans_3"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:hint="答案3"
                 android:inputType="text"
-                android:singleLine="false"
-                android:layout_toRightOf="@id/checkBox_3"/>
+                android:singleLine="false" />
+            </android.support.design.widget.TextInputLayout>
 
         </RelativeLayout>
 
@@ -155,14 +160,19 @@
                 android:layout_height="wrap_content"
                 android:id="@+id/checkBox_4" />
 
+            <android.support.design.widget.TextInputLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_toRightOf="@id/checkBox_4">
+
             <AutoCompleteTextView
                 android:id="@+id/ans_4"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:hint="答案4"
                 android:inputType="text"
-                android:singleLine="false"
-                android:layout_toRightOf="@id/checkBox_4"/>
+                android:singleLine="false" />
+            </android.support.design.widget.TextInputLayout>
 
 
         </RelativeLayout>
