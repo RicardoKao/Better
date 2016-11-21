@@ -1,9 +1,14 @@
 package layout;
 
 
+import android.app.Activity;
+import android.content.Context;
+import android.content.Intent;
+import android.content.SharedPreferences;
 import android.graphics.Color;
 import android.graphics.drawable.BitmapDrawable;
 import android.graphics.drawable.Drawable;
+import android.os.AsyncTask;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.support.v4.widget.SwipeRefreshLayout;
@@ -29,11 +34,19 @@ import com.mikepenz.iconics.IconicsDrawable;
 
 import android.graphics.Bitmap;
 
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 
 import aiinno.com.better.card.PlanProvider;
 import aiinno.com.better.card.UserPlanProvider;
+import aiinno.com.better.model.Plan;
+import aiinno.com.better.model.Ret;
+import aiinno.com.better.service.PlanService;
+import aiinno.com.better.service.SignService;
+import aiinno.com.better.ui.BaseActivity;
+import aiinno.com.better.ui.LoginActivity;
+import android.content.SharedPreferences;
 
 /**
  * A simple {@link Fragment} subclass.
@@ -42,6 +55,7 @@ public class HomeFragment extends Fragment implements SwipeRefreshLayout.OnRefre
     SwipeRefreshLayout swipeLayout;
     private MaterialListView mListView;
     private MaterialListView mListView2;
+    GetPlansTask mSignTask;
 
     public HomeFragment() {
         // Required empty public constructor
@@ -135,6 +149,8 @@ public class HomeFragment extends Fragment implements SwipeRefreshLayout.OnRefre
                         }
                 );
         */
+        mSignTask = new GetPlansTask();
+        mSignTask.execute((Void) null);
         return view;
     }
     @Override
@@ -176,5 +192,60 @@ public class HomeFragment extends Fragment implements SwipeRefreshLayout.OnRefre
                 .build();
          */
         return card;
+    }
+
+    private List<Card> getUserPlans()
+    {
+        List<Card> cards = new ArrayList<>();
+        return cards;
+    }
+
+    public class GetPlansTask extends AsyncTask<Void, Void, ArrayList<Plan>> {
+
+        @Override
+        protected ArrayList<Plan> doInBackground(Void... params) {
+            SharedPreferences preference = getActivity().getSharedPreferences("person",Context.MODE_PRIVATE);
+            String email = preference.getString("Email","");
+            String passwd = preference.getString("Passwd", "");
+            try {
+                SignService s = new SignService();
+                Ret authinfo = s.Login(email,passwd,"email","android");
+                PlanService _planss = new PlanService();
+                ArrayList<Plan> _plans = _planss.GetPlan(authinfo.data);
+                return _plans;
+            }  catch(IOException e){
+                Log.d("ex",e.toString());
+
+                return null;
+            }
+        }
+
+        @Override
+        protected void onPostExecute(ArrayList<Plan> plans) {
+            List<Card> cards = new ArrayList<>();
+            if (plans!=null) {
+                //finish();
+                for (Plan j : plans) {
+                    Card card = new Card.Builder(getActivity())
+                            .withProvider(new UserPlanProvider())
+                            .setPlanTitle(j.getTitle())
+                            .setImg(R.drawable.alarmclock)
+                            .setDay(j.getDays())
+                            .setCDay(j.getComplated_days())
+                            .setFee(j.getFee())
+                            .endConfig()
+                            .build();
+                    cards.add(card);
+                }
+                mListView2.getAdapter().addAll(cards);
+            } else {
+
+            }
+        }
+
+        @Override
+        protected void onCancelled() {
+
+        }
     }
 }

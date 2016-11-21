@@ -36,6 +36,7 @@ public interface PlanAPI {
 
     @GET("/plans/") @Json
     Call<ArrayList<Plan>> GetPlan();
+
     @GET("/plans/")
     Observable<ResponseBody> downloadPicFromNet();
 }
