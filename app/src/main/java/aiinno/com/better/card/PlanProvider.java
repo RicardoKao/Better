@@ -70,6 +70,14 @@ public class PlanProvider extends CardProvider<ListCardProvider> {
         return this;
     }
 
+    public void addGoldNum(int gold){
+        this.gold += gold;
+    }
+
+    public void addExp(int exp){
+        this.exp += exp;
+    }
+
 
 
 

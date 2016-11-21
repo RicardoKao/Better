@@ -125,7 +125,10 @@ public class HomeFragment extends Fragment implements SwipeRefreshLayout.OnRefre
         checkin_button.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Toast.makeText(getActivity(), "成功签到", Toast.LENGTH_SHORT).show();
+                ((PlanProvider)mListView.getAdapter().getCard(0).getProvider()).addGoldNum(10);
+                ((PlanProvider)mListView.getAdapter().getCard(0).getProvider()).addExp(10);
+                mListView.getAdapter().notifyDataSetChanged();
+                Toast.makeText(getActivity(), "成功签到,加10金币，加10经验", Toast.LENGTH_SHORT).show();
             }
         });
 
@@ -147,25 +150,6 @@ public class HomeFragment extends Fragment implements SwipeRefreshLayout.OnRefre
                 .endConfig()
                 .build();
         return card;
-    }
-
-    private Card initUserPlan(){
-        Card card = new Card.Builder(getActivity())
-                .withProvider(new UserPlanProvider())
-                .setPlanTitle("每天6：00起床")
-                .setImg(R.drawable.alarmclock)
-                .setDay(10)
-                .setCDay(3)
-                .setFee(50)
-                .endConfig()
-                .build();
-        return card;
-    }
-
-    private List<Card> getUserPlans()
-    {
-        List<Card> cards = new ArrayList<>();
-        return cards;
     }
 
     public class GetPlansTask extends AsyncTask<Void, Void, ArrayList<Plan>> {

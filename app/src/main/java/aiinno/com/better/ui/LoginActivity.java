@@ -459,9 +459,14 @@ public class LoginActivity extends AppCompatActivity implements LoaderCallbacks<
         }
 
         @Override
+        protected void onPreExecute() {
+            mtoLoginTextView.setVisibility(View.GONE);
+            mtoSigninTextView.setVisibility(View.GONE);
+        }
+
+        @Override
         protected Boolean doInBackground(Void... params) {
             // TODO: attempt authentication against a network service.
-
             try {
                 SignService s = new SignService();
                 Ret r = s.Login(mEmail,mPassword,"email","android");
@@ -480,24 +485,11 @@ public class LoginActivity extends AppCompatActivity implements LoaderCallbacks<
                 Log.d("ex",e.toString());
                 return false;
             }
-/*
-            for (String credential : DUMMY_CREDENTIALS) {
-                String[] pieces = credential.split(":");
-                if (pieces[0].equals(mEmail)) {
-                    // Account exists, return true if the password matches.
-                    return pieces[1].equals(mPassword);
-                }
-            }
-            */
-
-            // TODO: register the new account here.
         }
 
         @Override
         protected void onPostExecute(final Boolean success) {
             mAuthTask = null;
-            showProgress(false);
-
             if (success) {
                 //finish();
                 Intent intent = new Intent();
@@ -507,6 +499,7 @@ public class LoginActivity extends AppCompatActivity implements LoaderCallbacks<
             } else {
                 mPasswordView.setError(getString(R.string.error_incorrect_password));
                 mPasswordView.requestFocus();
+                mtoSigninTextView.setVisibility(View.VISIBLE);
             }
         }
 
