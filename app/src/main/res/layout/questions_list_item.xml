@@ -52,7 +52,7 @@
                 android:layout_height="wrap_content"
                 android:layout_alignParentEnd="true"
                 android:layout_alignParentRight="true"
-                android:text="delete"
+                android:text="@string/delete"
                 android:textColor="@android:color/holo_blue_bright" />
         </RelativeLayout>
 
@@ -69,7 +69,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:hint="问题描述"
-                android:inputType="text"/>
+                android:inputType="textMultiLine"/>
             </android.support.design.widget.TextInputLayout>
 
         </RelativeLayout>
@@ -89,11 +89,11 @@
                 android:layout_toRightOf="@id/checkBox_1">
                 <AutoCompleteTextView
                     android:id="@+id/ans_1"
-                    android:layout_width="match_parent"
+                    android:layout_width="fill_parent"
                     android:layout_height="wrap_content"
                     android:hint="答案1"
-                    android:inputType="text"
-                    android:singleLine="true" />
+                    android:inputType="textMultiLine"
+                    android:singleLine="false"/>
             </android.support.design.widget.TextInputLayout>
         </RelativeLayout>
 
@@ -117,7 +117,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:hint="答案2"
-                android:inputType="text"
+                android:inputType="textMultiLine"
                 android:singleLine="false"
                 android:layout_toRightOf="@id/checkBox_2"/>
             </android.support.design.widget.TextInputLayout>
@@ -144,7 +144,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:hint="答案3"
-                android:inputType="text"
+                android:inputType="textMultiLine"
                 android:singleLine="false" />
             </android.support.design.widget.TextInputLayout>
 
@@ -170,7 +170,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:hint="答案4"
-                android:inputType="text"
+                android:inputType="textMultiLine"
                 android:singleLine="false" />
             </android.support.design.widget.TextInputLayout>
 

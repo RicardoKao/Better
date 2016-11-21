@@ -1,10 +1,13 @@
 package aiinno.com.better;
 
+import android.app.AlertDialog;
+import android.content.DialogInterface;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ListView;
+import android.widget.TextView;
 
 import com.dexafree.materialList.card.Card;
 import com.dexafree.materialList.view.MaterialListView;
@@ -23,7 +26,8 @@ import aiinno.com.better.card.QuestionProvider;
 public class SetQuestionsActivity extends AppCompatActivity {
 
     public static List<QuestionsBean> datas;
-    private MaterialListView listView;
+    private ListView listView;
+
 
 
     @Override
@@ -31,19 +35,20 @@ public class SetQuestionsActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_set_questions);
 
-       listView = (MaterialListView) findViewById(R.id.add_questions_listview);
-        Button button = (Button) findViewById(R.id.add_questions);
-        List<Card> cards = new ArrayList<>();
-        Card card = new Card.Builder(this)
-                .withProvider(new QuestionProvider())
-                .endConfig()
-                .build();
-        cards.add(card);
-        listView.getAdapter().addAll(cards);
+       listView = (ListView) findViewById(R.id.add_questions_listview);
+        datas = new ArrayList<>();
+        //datas.add(new ItemBean());
+        datas.add(new QuestionsBean());
+        //final ListAdapter adapter = new ListAdapter(datas, this, AddPlanActivity.this);
+        final QuestionsAdapter adapter = new QuestionsAdapter(datas, this, SetQuestionsActivity.this);
+        listView.setAdapter(adapter);
 
+        Button button = (Button) findViewById(R.id.add_questions);
         button.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                datas.add(new QuestionsBean());
+                adapter.notifyDataSetChanged();
 
             }
         });

@@ -38,5 +38,6 @@
     <string name="prompt_token">验证码</string>
     <string name="prompt_feeds">写点感想吧...</string>
     <string name="checkin_add_img">上传图片</string>
+    <string name="delete">删除</string>
 
 </resources>

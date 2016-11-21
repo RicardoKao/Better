@@ -66,7 +66,7 @@ public class QuestionsAdapter extends BaseAdapter {
         final QuestionsAdapter.ViewHolder viewHolder;
         if (convertView == null) {
             viewHolder = new QuestionsAdapter.ViewHolder();
-            convertView = inflater.inflate(R.layout.questions_item, null);
+            convertView = inflater.inflate(R.layout.questions_list_item, null);
             viewHolder.rule = (EditText) convertView.findViewById(R.id.rule_value);
             viewHolder.num = (TextView) convertView.findViewById(R.id.num);
             viewHolder.tvDelete = (TextView) convertView.findViewById(R.id.tv_detele);
