@@ -14,7 +14,8 @@
         android:layout_height="wrap_content"
         android:text="设置问题"
         android:textColor="#14e4ff" />
-    <ListView
+
+    <com.dexafree.materialList.view.MaterialListView
         android:id="@+id/add_questions_listview"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
